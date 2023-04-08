@@ -1,0 +1,60 @@
+----- User Manual on How to Use the Program ---------------------------------------------------------------------------------------------
+
+1st Before compiling or running the program, it is necessary to fill in the ".txt" file called "instructions" with the program you want to execute inside the CPU.
+
+2nd The program must be standardized so that it runs correctly within the CPU.
+
+3rd In addition to being standardized, the program must use a specific set of instructions that were developed for that CPU. 
+The set of instructions that you must use along with the description of each instruction is in the ".txt" file called "instructionSet".
+
+Below is a standardized program developed for this CPU:
+
+The program below executes the following mathematical equation: A = 32 + 3 x 4/5-3
+
+0;i;lda 96/ldb 98
+4;i;sub/xchg
+8;i;lda 94/div
+c;i;ldb 92/mul
+10;i;ldb 90/add
+14;i;sta 8e/hlt
+90;d;20
+92;d;3
+94;d;4
+96;d;5
+98;d;3
+
+Below is a theoretical explanation of how the program in the text file that will run on the CPU should be arranged:
+
+The program in the .txt file should be divided into lines, and each line should also be divided into three parts:
+
+I - Memory address:
+
+The memory address is represented by the value (hexadecimal value of 0x0-0x99) located before the first ";"
+This value must be between 0x0-0x99 because the memory is limited to 154 positions in decimal, and each memory position is represented by 1 byte.
+The program must start at position 0x0 as shown in the example above.
+The program must also be arranged sequentially, meaning that the program cannot be broken or divided by memory. 
+(This rule only applies to the instructions that make up the program itself, and data does not need to follow this rule.)
+II - Content Type:
+
+The content type is represented by the character located between the two ";",
+and this character can be "i" indicating that the content is a set of instructions or "d" indicating that the content is data.
+
+III - Content:
+
+The content should be immediately after the last ";". It can be data represented by a hexadecimal value of up to 16 bits, occupying a total of 2 bytes
+ within memory (2 indices), or a set of instructions, occupying a total of 4 bytes within memory (4 indices). 
+(Therefore, in the example, the memory address value is represented by 4 for a set of instructions and 2 for data.)
+
+If the content is an instruction, each line will have two instructions, which are divided by "/". It is recommended to analyze the instructions described in 
+the ".txt" file called "instructionSet" because some instructions need to be accompanied by a value for them to perform their functions correctly.
+
+Knowing all of this, you can compile and execute the program.
+
+When you run the program, you can read the instructions in the "INSTRUCTIONS" field. If you want to allocate the instructions in memory, 
+you can press "ENTER". Otherwise, you can press "CTRL+C" to close the program and modify the ".txt" file called "instructions" however you want,
+following the rules described above.
+
+If you pressed the "ENTER" key, the entire file was decoded and allocated in memory. 
+The program is ready to be executed. You can continue pressing "ENTER" so that the program can be executed, or press "CTRL+C" to stop the program. 
+Every time you press 'ENTER', an instruction and one cycle of the machine is being executed. 
+The program will be finished as soon as it encounters the "hlt" indicating the end of the program.

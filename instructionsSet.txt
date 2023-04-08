@@ -1,0 +1,144 @@
+--------------------------------INSTRUCTION SET---------------------------------------------------------
+
+hlt:
+
+HALT: the processor does nothing. In other words, no register is altered during the execution of hlt. It should be placed at the end of the program.
+
+nop:
+
+NO OPERATION: if LR = 1, PC is incremented, but no other register has its value altered during the execution of nop, 
+except for LR, which follows the above operation. If LR = 0, no register, except for LR, has its value altered.
+
+add:
+
+ADD REGISTER: A = A + B
+
+sub:
+
+SUBTRACT REGISTER: A = A - B
+
+mul:
+
+MULTIPLY REGISTER: A = A × B
+
+div:
+
+DIVIDE REGISTER: A = A ÷ B
+
+cmp:
+
+COMPARE REGISTER: compares the word in register A with the word in register B and sequentially 
+fills the internal registers E, L, and G values by performing the following tests:
+
+If A = B, then E = 1; otherwise E = 0;
+If A < B, then L = 1; otherwise L = 0;
+If A > B, then G = 1; otherwise G = 0.
+xchg:
+
+EXCHANGE: swaps the contents between registers A and B using the internal register T as a temporary space:
+
+T ← A;
+A ← B;
+B ← T.
+and:
+
+LOGICAL-AND ON REGISTER: A = A & B
+
+or:
+
+LOGICAL-OR ON REGISTER: A = A | B
+
+xor:
+
+LOGICAL-XOR ON REGISTER: A = A ^ B
+
+not:
+
+LOGICAL-NOT ON REGISTER: A = ! A
+
+je M[X]:
+
+JUMP IF EQUAL TO: changes the PC register to memory address X if E = 1
+
+jne M[X]:
+
+JUMP IF NOT EQUAL TO: changes the PC register to memory address X if E = 0
+
+jl M[X]:
+
+JUMP IF LOWER THAN: changes the PC register to memory address X if L = 1
+
+jle M[X]:
+
+JUMP IF LOWER THAN OR EQUAL TO: changes the PC register to memory address X if E = 1 or L = 1
+
+jg M[X]:
+
+JUMP IF GREATER THAN: changes the PC register to memory address X if G = 1
+
+jge M[X]:
+
+JUMP IF GREATER THAN OR EQUAL TO: changes the PC register to memory address X if E = 1 or G = 1
+
+jmp M[X]:
+
+JUMP: changes the PC register to memory address X.
+
+lda M[X]:
+
+LOAD A: loads register A with a 16-bit word from memory that starts at address X
+
+ldb M[X]:
+
+LOAD B: loads register B with a 16-bit word from memory that starts at address X
+
+sta M[X]:
+
+STORE A: stores the contents of register A in a 16-bit word that starts at memory address X
+
+stb M[X]:
+
+STORE B: stores the contents of register B in a 16-bit word that starts at memory address X
+
+ldrb:
+
+LOAD A WITH WORD POINTED BY B: loads register A with a 16-bit word from memory that starts at the address contained in register B.
+
+movial imm:
+
+MOVE IMMEDIATE TO LOWER A: clears register A and moves the eight least significant bits (0:7) of the immediate to the lower part (0:7) of register A.
+
+moviah imm:
+
+MOVE IMMEDIATE TO HIGHER A: move the least significant eight bits (0:7) of the immediate value to the upper part (8:15) of register A,
+ while the least significant bits of register A are kept intact.
+
+addia imm:
+
+ADD A WITH IMMEDIATE: A = A + IMM
+
+subia imm:
+
+SUBTRACT A WITH IMMEDIATE: A = A - IMM
+
+mulia imm:
+
+MULTIPLY A WITH IMMEDIATE: A = A × IMM
+
+divia imm:
+
+DIVIDE A WITH IMMEDIATE: A = A ÷ IMM
+
+lsh imm:
+
+LEFT SHIFT: shift the word in register A left by IMM bits
+
+rsh imm:
+
+RIGHT SHIFT: shift the word in register A right by IMM bits.
+
+------------------------------------------------------------------------------------------------------------------------------fim------------------------------
+
+
+
+
